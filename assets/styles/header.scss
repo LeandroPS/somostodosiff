@@ -1,0 +1,33 @@
+@import "./colors.scss";
+
+header {
+    height: 60px;
+
+    .container {
+        align-items: center;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+
+        ul.social {
+            padding: 0;
+            margin: 0;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+
+            li {
+                list-style: none;
+                a {
+                    text-decoration: none;
+                    i {
+                        color: $green;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
