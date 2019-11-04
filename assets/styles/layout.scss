@@ -1,5 +1,9 @@
+$mobile-width: 700px;
+
 .container {
-  width: 1000px;
-  max-width: calc(100vw - 40px);
-  margin: auto;
+    width: 1000px;
+    max-width: calc(100vw - 40px);
+    margin: auto;
+
+    position: relative;
 }

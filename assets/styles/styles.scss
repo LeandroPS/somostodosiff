@@ -17,6 +17,10 @@ body {
     background-image: url("../images/banner.png");
     background-position: center;
     background-size: cover;
+
+    @media screen and (max-width: $mobile-width) {
+        height: 200px;
+    }
 }
 
 section {
@@ -27,6 +31,10 @@ section {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 20px;
+
+            @media screen and (max-width: $mobile-width) {
+                grid-template-columns: 1fr;
+            }
 
             a {
                 text-decoration: none;
@@ -39,14 +47,26 @@ section {
 
                     height: 100px;
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-end;
                     flex-direction: column;
+
+                    overflow: hidden;
+                    position: relative;
 
                     &::before {
                         content: "\E916";
                         font-family: LineIcons !important;
-                        font-size: 20px;
+                        font-size: 100px;
                         color: #fff;
+                        transform: scale(-1, 1);
+                        left: -20px;
+                        top: -20px;
+                        opacity: 0.5;
+                        position: absolute;
+                    }
+
+                    &:hover {
+                        opacity: 0.9;
                     }
 
                     .title {
@@ -56,6 +76,48 @@ section {
 
                         text-align: right;
                     }
+                }
+            }
+        }
+    }
+
+    &.videos {
+        .video-container {
+            // display: flex;
+            // justify-content: flex-start;
+            // flex-direction: row;
+            white-space: nowrap;
+
+            .video {
+                background-color: rgba(0, 0, 0, 0.05);
+                background-size: cover;
+                background-position: center;
+                width: 320px;
+                height: 160px;
+                position: relative;
+                cursor: pointer;
+                display: inline-block;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                &::after {
+                    content: "\E9C2";
+                    font-family: LineIcons !important;
+                    font-size: 40px;
+                    position: absolute;
+                    color: #000;
+                    background-color: rgba(255, 255, 255, 0.3);
+                    padding: 20px;
+                    border-radius: 50px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
                 }
             }
         }
@@ -77,12 +139,27 @@ section {
                     color: #fff;
                     padding: 20px;
                     display: inline-block;
+                    overflow: hidden;
+
+                    position: relative;
 
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-end;
                     flex-direction: column;
 
                     margin-right: 20px;
+
+                    &::before {
+                        content: "\E988";
+                        font-family: LineIcons !important;
+                        font-size: 100px;
+                        color: #fff;
+                        transform: scale(-1, 1);
+                        left: -20px;
+                        top: -30px;
+                        opacity: 0.5;
+                        position: absolute;
+                    }
 
                     .title {
                         display: block;
@@ -91,13 +168,15 @@ section {
 
                     .date {
                         font-weight: bold;
-                        &::before {
-                            content: "\E988";
-                            font-family: LineIcons !important;
-                            font-size: 20px;
-                            color: #fff;
-                            margin-right: 5px;
-                        }
+                        text-align: right;
+                        margin-bottom: 10px;
+                        // &::before {
+                        //     content: "\E988";
+                        //     font-family: LineIcons !important;
+                        //     font-size: 20px;
+                        //     color: #fff;
+                        //     margin-right: 5px;
+                        // }
                     }
                 }
             }
@@ -117,4 +196,81 @@ footer {
         font-weight: bold;
         text-decoration: none;
     }
+}
+
+button.suggestions {
+    position: relative;
+    margin: 20px auto;
+    left: 50%;
+    transform: translateX(-50%);
+    // bottom: 40px;
+    // right: 20px;
+    height: 60px;
+    background-color: $red;
+    padding: 0 30px;
+    border-radius: 30px;
+    color: #fff;
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    outline: none;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    i {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+}
+
+.carousel {
+    overflow: scroll;
+
+    @media screen and (max-width: $mobile-width) {
+        width: calc(100vw);
+        margin-left: -20px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .inner-carousel {
+        @media screen and (max-width: $mobile-width) {
+            padding-left: 20px;
+
+            .video:last-child {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+button.carousel-back,
+button.carousel-forward {
+    background-color: transparent;
+    position: absolute;
+    bottom: 90px;
+    font-size: 40px;
+    transform: translateY(+50%);
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $red;
+    }
+}
+
+button.carousel-back {
+    left: -60px;
+}
+
+button.carousel-forward {
+    right: -60px;
 }
