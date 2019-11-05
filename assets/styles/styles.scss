@@ -199,6 +199,15 @@ section {
     height: 250px;
     width: 100%;
     position: relative;
+    text-align: center;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 
     // background-blend-mode: multiply;
 
@@ -209,6 +218,8 @@ section {
         width: 100%;
         height: 100%;
         position: absolute;
+        left: 0;
+        top: 0;
         opacity: 0.6;
 
         background-blend-mode: multiply;
@@ -232,8 +243,8 @@ section {
 
     h1 {
         width: fit-content;
-        background-color: #fff;
-        padding: 20px;
+        // background-color: #fff;
+        // padding: 20px;
         // color: red;
         position: absolute;
         z-index: 2;
@@ -243,6 +254,36 @@ section {
         top: 50%;
 
         transform: translate(-50%, -50%);
+
+        display: inline;
+        background: orange;
+        box-shadow: 10px 0 0 red, -10px 0 0 red;
+        white-space: pre-wrap;
+
+        max-width: calc(100vw - 64px);
+    }
+
+    .inner-mid-banner {
+        .title {
+            display: inline;
+            position: relative;
+            z-index: 2;
+            background-color: #fff;
+            font-size: 30px;
+            line-height: 50px;
+            font-weight: bold;
+            padding: 10px;
+
+            box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+
+            // top: 50%;
+            // margin-top: -50%;
+            // transform: translateY(-50%);
+
+            i {
+                margin-right: 10px;
+            }
+        }
     }
 }
 

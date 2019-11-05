@@ -48,20 +48,28 @@ const closeVideo = () => {
     document.querySelector("main").classList.remove("blurred");
 };
 
+const scrollLeft = elem => {
+    elem.scroll({
+        left: elem.scrollLeft - 340,
+        behavior: "smooth"
+    });
+};
+
+const scrollRight = elem => {
+    elem.scroll({
+        left: elem.scrollLeft + 340,
+        behavior: "smooth"
+    });
+};
+
 (async function() {
     const videos = await getVideos();
     const agenda = await getAgenda();
-
-    console.log(videos);
 
     videos.forEach(item => {
         var video = document.createElement("div");
         video.classList.add("video");
         video.style.backgroundImage = `url(${item.snippet.thumbnails.medium.url})`;
-        // video.setAttribute(
-        //     "video-address",
-        //     "https://www.youtube.com/embed/" + item.id.videoId
-        // );
         video.onclick = () =>
             setVideo("https://www.youtube.com/embed/" + item.id.videoId);
 
@@ -85,6 +93,18 @@ const closeVideo = () => {
         agenda_item.appendChild(title);
 
         document.querySelector(".agenda-container").appendChild(agenda_item);
+    });
+
+    document.querySelectorAll("button.carousel-back").forEach(element => {
+        element.onclick = () => {
+            scrollLeft(element.closest(".carousel"));
+        };
+    });
+
+    document.querySelectorAll("button.carousel-forward").forEach(element => {
+        element.onclick = () => {
+            scrollRight(element.closest(".carousel"));
+        };
     });
 
     document.querySelector("div.glass").onclick = closeVideo;
