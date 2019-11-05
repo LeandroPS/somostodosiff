@@ -1,0 +1,31 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /Users/leandropiresdesouza/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:/Users/leandropiresdesouza/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/leandropiresdesouza/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:/Users/leandropiresdesouza/.rbenv/shims
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.15.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: read ETIMEDOUT
+      at TLSWrap.onStreamRead (internal/stream_base_commons.js:111:27)
+
+npm manifest: 
+  {
+    "devDependencies": {
+      "sass": "^1.23.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

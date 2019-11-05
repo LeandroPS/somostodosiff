@@ -9,10 +9,21 @@ body {
     color: $dark;
 }
 
+main {
+    filter: blur(0px);
+
+    transition: all 0.5s;
+
+    &.blurred {
+        filter: blur(5px);
+        transition: all 0.5s;
+    }
+}
+
 .banner {
     width: 100%;
     height: 400px;
-    background: red;
+    background: $green;
 
     background-image: url("../images/banner.png");
     background-position: center;
@@ -52,6 +63,10 @@ section {
 
                     overflow: hidden;
                     position: relative;
+
+                    @media screen and (max-width: $mobile-width) {
+                        height: 50px;
+                    }
 
                     &::before {
                         content: "\E916";
@@ -129,58 +144,105 @@ section {
             justify-content: flex-start;
             flex-direction: row;
 
-            a {
-                color: inherit;
-                text-decoration: none;
-                .agenda {
-                    width: 180px;
-                    height: 150px;
-                    background: $red;
+            .agenda {
+                width: 180px;
+                height: 150px;
+                background: $red;
+                color: #fff;
+                padding: 20px;
+                display: inline-block;
+                overflow: hidden;
+
+                position: relative;
+
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+
+                margin-right: 20px;
+
+                &::before {
+                    content: "\E988";
+                    font-family: LineIcons !important;
+                    font-size: 100px;
                     color: #fff;
-                    padding: 20px;
-                    display: inline-block;
-                    overflow: hidden;
+                    transform: scale(-1, 1);
+                    left: -20px;
+                    top: -30px;
+                    opacity: 0.5;
+                    position: absolute;
+                }
 
-                    position: relative;
+                .title {
+                    display: block;
+                    text-align: right;
+                }
 
-                    display: flex;
-                    justify-content: flex-end;
-                    flex-direction: column;
-
-                    margin-right: 20px;
-
-                    &::before {
-                        content: "\E988";
-                        font-family: LineIcons !important;
-                        font-size: 100px;
-                        color: #fff;
-                        transform: scale(-1, 1);
-                        left: -20px;
-                        top: -30px;
-                        opacity: 0.5;
-                        position: absolute;
-                    }
-
-                    .title {
-                        display: block;
-                        text-align: right;
-                    }
-
-                    .date {
-                        font-weight: bold;
-                        text-align: right;
-                        margin-bottom: 10px;
-                        // &::before {
-                        //     content: "\E988";
-                        //     font-family: LineIcons !important;
-                        //     font-size: 20px;
-                        //     color: #fff;
-                        //     margin-right: 5px;
-                        // }
-                    }
+                .date {
+                    font-weight: bold;
+                    text-align: right;
+                    margin-bottom: 10px;
+                    // &::before {
+                    //     content: "\E988";
+                    //     font-family: LineIcons !important;
+                    //     font-size: 20px;
+                    //     color: #fff;
+                    //     margin-right: 5px;
+                    // }
                 }
             }
         }
+    }
+}
+
+.mid-banner {
+    height: 250px;
+    width: 100%;
+    position: relative;
+
+    // background-blend-mode: multiply;
+
+    &:before {
+        content: "";
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0.6;
+
+        background-blend-mode: multiply;
+    }
+
+    &.red {
+        background-color: #fff;
+        &:before {
+            background-image: url(../images/mural.jpg);
+            background-color: $red;
+        }
+    }
+
+    &.green {
+        background-color: #fff;
+        &:before {
+            background-image: url(../images/participe.jpg);
+            background-color: $green;
+        }
+    }
+
+    h1 {
+        width: fit-content;
+        background-color: #fff;
+        padding: 20px;
+        // color: red;
+        position: absolute;
+        z-index: 2;
+        margin: 0;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -227,6 +289,49 @@ button.suggestions {
     }
 }
 
+.glass {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    visibility: hidden;
+
+    transition: all 0.5s;
+
+    &.show {
+        background-color: rgba(0, 0, 0, 0.5);
+        visibility: visible;
+
+        transition: all 0.5s;
+    }
+}
+
+.video-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    max-width: calc(100vw - 40px);
+    height: 400px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.5s;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .carousel {
     overflow: scroll;
 
@@ -264,6 +369,10 @@ button.carousel-forward {
 
     &:hover {
         color: $red;
+    }
+
+    @media screen and (max-width: $mobile-width) {
+        display: none;
     }
 }
 

@@ -8,7 +8,11 @@ header {
         height: 100%;
         display: flex;
         justify-content: space-between;
-        flex-direction: row-reverse;
+        flex-direction: row;
+
+        img.logo {
+            height: 40px;
+        }
 
         ul.social {
             padding: 0;
@@ -25,6 +29,10 @@ header {
                     i {
                         color: $green;
                         font-size: 25px;
+
+                        &:hover {
+                            color: $red;
+                        }
                     }
                 }
             }
