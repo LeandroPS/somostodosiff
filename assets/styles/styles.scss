@@ -241,28 +241,6 @@ section {
         }
     }
 
-    h1 {
-        width: fit-content;
-        // background-color: #fff;
-        // padding: 20px;
-        // color: red;
-        position: absolute;
-        z-index: 2;
-        margin: 0;
-
-        left: 50%;
-        top: 50%;
-
-        transform: translate(-50%, -50%);
-
-        display: inline;
-        background: orange;
-        box-shadow: 10px 0 0 red, -10px 0 0 red;
-        white-space: pre-wrap;
-
-        max-width: calc(100vw - 64px);
-    }
-
     .inner-mid-banner {
         .title {
             display: inline;
