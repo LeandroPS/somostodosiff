@@ -1,0 +1,51 @@
+.carousel {
+    overflow: scroll;
+
+    @media screen and (max-width: $mobile-width) {
+        width: calc(100vw);
+        margin-left: -20px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .inner-carousel {
+        @media screen and (max-width: $mobile-width) {
+            padding-left: 20px;
+
+            .video:last-child {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+button.carousel-back,
+button.carousel-forward {
+    background-color: transparent;
+    position: absolute;
+    bottom: 90px;
+    font-size: 40px;
+    transform: translateY(+50%);
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $red;
+    }
+
+    @media screen and (max-width: $mobile-width) {
+        display: none;
+    }
+}
+
+button.carousel-back {
+    left: -60px;
+}
+
+button.carousel-forward {
+    right: -60px;
+}
