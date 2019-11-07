@@ -42,7 +42,7 @@ section {
     &.document {
         .document-container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
 
             @media screen and (max-width: $mobile-width) {
@@ -58,10 +58,11 @@ section {
                     color: #fff;
                     padding: 20px;
 
-                    height: 100px;
+                    height: 50px;
                     display: flex;
                     justify-content: flex-end;
                     flex-direction: column;
+                    border-radius: 5px;
 
                     overflow: hidden;
                     position: relative;
@@ -222,7 +223,7 @@ section {
         position: absolute;
         left: 0;
         top: 0;
-        opacity: 0.6;
+        opacity: 0.8;
 
         background-blend-mode: multiply;
     }
