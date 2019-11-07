@@ -9,7 +9,8 @@ const getVideos = async () => {
         `https://www.googleapis.com/youtube/v3/playlistItems`,
         {
             params: {
-                playlistId: "PLq4HxXQWgC51XslsrtONtnZ5PxchdmfVT",
+                playlistId: "PLYIeFndJrJUn8RJf5o9O1EiaXzuHjiO-N",
+                // playlistId: "PLq4HxXQWgC51XslsrtONtnZ5PxchdmfVT",
                 maxResults: 20,
                 part: "snippet",
                 type: "playlist",

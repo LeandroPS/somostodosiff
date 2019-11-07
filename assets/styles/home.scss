@@ -27,7 +27,8 @@ main {
     height: 400px;
     background: $green;
 
-    background-image: url("../images/banner.png");
+    background-image: url("../images/banner2.png");
+    // background-image: url("../images/teste banner site-100.jpg");
     background-position: center;
     background-size: cover;
 
@@ -42,7 +43,7 @@ section {
     &.document {
         .document-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-gap: 20px;
 
             @media screen and (max-width: $mobile-width) {
@@ -73,6 +74,7 @@ section {
 
                     &::before {
                         content: "\E916";
+                        // content: url(/assets/images/tagIcon.png);
                         font-family: LineIcons !important;
                         font-size: 100px;
                         color: #fff;
@@ -198,6 +200,21 @@ section {
             }
         }
     }
+}
+
+.mid-banner-link {
+    color: black;
+    text-decoration: none;
+}
+
+.mid-banner-link:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.mid-banner-link:hover {
+    color: red;
+    text-decoration: none;
 }
 
 .mid-banner {
