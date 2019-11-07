@@ -1,5 +1,10 @@
 $mobile-width: 700px;
 
+body {
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+}
+
 .container {
     width: 1000px;
     max-width: calc(100vw - 40px);

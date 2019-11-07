@@ -2,6 +2,8 @@ import "babel-polyfill";
 
 import axios from "axios";
 
+// import "./carousel.js";
+
 const getVideos = async () => {
     const videos = await axios.get(
         `https://www.googleapis.com/youtube/v3/search`,
