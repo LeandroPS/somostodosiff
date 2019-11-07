@@ -201,6 +201,21 @@ section {
     }
 }
 
+.mid-banner-link {
+    color: black;
+    text-decoration: none;
+}
+
+.mid-banner-link:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.mid-banner-link:hover {
+    color: red;
+    text-decoration: none;
+}
+
 .mid-banner {
     height: 250px;
     width: 100%;
