@@ -6,13 +6,13 @@ import axios from "axios";
 
 const getVideos = async () => {
     const videos = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search`,
+        `https://www.googleapis.com/youtube/v3/playlistItems`,
         {
             params: {
-                channelId: "UCXpOsvhSApM_ZPFRfwDsdqw",
+                playlistId: "PLq4HxXQWgC51XslsrtONtnZ5PxchdmfVT",
                 maxResults: 20,
                 part: "snippet",
-                type: "video",
+                type: "playlist",
                 key: "AIzaSyBvmrm7UADWfgbgobg_VMDNsSWtKcH63u4"
             }
         }
