@@ -74,6 +74,7 @@ section {
 
                     &::before {
                         content: "\E916";
+                        // content: url(/assets/images/tagIcon.png);
                         font-family: LineIcons !important;
                         font-size: 100px;
                         color: #fff;
