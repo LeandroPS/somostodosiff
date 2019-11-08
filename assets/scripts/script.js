@@ -69,12 +69,17 @@ const scrollRight = elem => {
     const videos = await getVideos();
     const agenda = await getAgenda();
 
+    console.log(videos);
+
     videos.forEach(item => {
         var video = document.createElement("div");
         video.classList.add("video");
         video.style.backgroundImage = `url(${item.snippet.thumbnails.medium.url})`;
         video.onclick = () =>
-            setVideo("https://www.youtube.com/embed/" + item.id.videoId);
+            setVideo(
+                "https://www.youtube.com/embed/" +
+                    item.snippet.resourceId.videoId
+            );
 
         document.querySelector(".video-container").appendChild(video);
     });
