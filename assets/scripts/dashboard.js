@@ -15,9 +15,10 @@ const getPosts = async () => {
     return posts.data.entries;
 };
 
-const appendCode = scriptAddress => {
+const appendCode = (scriptAddress, onload = () => {}) => {
     var script = document.createElement("script");
     script.src = scriptAddress;
+    script.onload = onload;
 
     document.head.appendChild(script);
 };
@@ -25,7 +26,7 @@ const appendCode = scriptAddress => {
 (async function() {
     const posts = await getPosts();
 
-    await posts.forEach(item => {
+    await posts.reverse().forEach(item => {
         var post_item = document.createElement("div");
         post_item.classList.add("post-wrapper");
 
@@ -34,8 +35,10 @@ const appendCode = scriptAddress => {
         document.querySelector(".posts-container").appendChild(post_item);
     });
 
-    appendCode("https://platform.twitter.com/widgets.js");
-    appendCode("http://www.instagram.com/embed.js");
-
-    window.instgrm.Embeds.process();
+    setTimeout(() => {
+        appendCode("https://platform.twitter.com/widgets.js");
+        appendCode("http://www.instagram.com/embed.js", () =>
+            window.instgrm.Embeds.process()
+        );
+    }, 1000);
 })();
