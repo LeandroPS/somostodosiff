@@ -90,8 +90,8 @@ const scrollRight = elem => {
 
         var time = document.createElement("span");
         time.classList.add("date");
-        time.innerText = `${item.Data.split("-")[1]}/${
-            item.Data.split("-")[2]
+        time.innerText = `${item.Data.split("-")[2]}/${
+            item.Data.split("-")[1]
         } ${item.Hora.split(":")[0]}h${item.Hora.split(":")[1]}`;
         var title = document.createElement("span");
         title.classList.add("title");
