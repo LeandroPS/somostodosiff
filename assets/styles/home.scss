@@ -5,6 +5,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap");
 
+%box-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
@@ -27,7 +31,7 @@ main {
     height: 400px;
     background: $green;
 
-    background-image: url("../images/banner2.png");
+    background-image: url("../images/banner.png");
     // background-image: url("../images/teste banner site-100.jpg");
     background-position: center;
     background-size: cover;
@@ -38,12 +42,65 @@ main {
 }
 
 section {
-    margin: 40px 0;
+    margin: 60px 0;
 
     &.document {
+        .principles-container {
+            display: flex;
+            margin-bottom: 20px;
+
+            a {
+                display: inline-block;
+                color: $dark;
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                @media screen and (max-width: $mobile-width) {
+                    &:last-child {
+                        margin-right: 20px;
+                    }
+                }
+
+                .principle {
+                    width: 320px;
+                    height: 170px;
+                    display: inline-block;
+                    vertical-align: top;
+                    border-radius: 10px;
+                    white-space: normal;
+                    margin-top: 40px;
+                    box-sizing: border-box;
+                    border: 1px solid $gray;
+
+                    background-color: #fff;
+                    text-align: center;
+
+                    &:hover {
+                        opacity: 0.9;
+                    }
+
+                    .pictogram {
+                        width: 80px;
+                        margin-bottom: 30px;
+                        margin-top: -40px;
+                    }
+
+                    .text {
+                        text-align: center;
+                        padding: 20px 20px;
+                        padding-top: 0;
+                        font-weight: bold;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
         .document-container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
 
             @media screen and (max-width: $mobile-width) {
@@ -73,14 +130,14 @@ section {
                     }
 
                     &::before {
-                        content: "\E916";
+                        content: url(../images/white-hashtag.svg);
                         // content: url(/assets/images/tagIcon.png);
                         font-family: LineIcons !important;
                         font-size: 100px;
                         color: #fff;
-                        transform: scale(-1, 1);
-                        left: -20px;
-                        top: -20px;
+                        left: -30px;
+                        top: -40px;
+                        width: 150px;
                         opacity: 0.5;
                         position: absolute;
                     }
@@ -112,6 +169,8 @@ section {
                 background-color: rgba(0, 0, 0, 0.05);
                 background-size: cover;
                 background-position: center;
+                border: 1px solid $gray;
+                box-sizing: border-box;
                 width: 320px;
                 height: 160px;
                 position: relative;
@@ -132,8 +191,8 @@ section {
                     font-family: LineIcons !important;
                     font-size: 40px;
                     position: absolute;
-                    color: #000;
-                    background-color: rgba(255, 255, 255, 0.3);
+                    color: $green;
+                    background-color: rgba(255, 255, 255, 0.8);
                     padding: 20px;
                     border-radius: 50px;
                     left: 50%;
@@ -146,9 +205,9 @@ section {
 
     &.agenda {
         .agenda-container {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: row;
+            // display: flex;
+            // justify-content: flex-start;
+            // flex-direction: row;
 
             .agenda {
                 width: 180px;

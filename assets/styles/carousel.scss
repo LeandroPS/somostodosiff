@@ -1,6 +1,6 @@
 .carousel {
     overflow: scroll;
-
+    scrollbar-width: none;
     @media screen and (max-width: $mobile-width) {
         width: calc(100vw);
         margin-left: -20px;
@@ -11,6 +11,8 @@
     }
 
     .inner-carousel {
+        white-space: nowrap;
+
         @media screen and (max-width: $mobile-width) {
             padding-left: 20px;
 
