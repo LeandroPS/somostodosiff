@@ -85,22 +85,25 @@ const scrollRight = elem => {
     });
 
     agenda.forEach(item => {
-        var agenda_item = document.createElement("div");
-        agenda_item.classList.add("agenda");
+        var agenda_wrapper = document.createElement("div");
 
-        var time = document.createElement("span");
-        time.classList.add("date");
-        time.innerText = `${item.Data.split("-")[2]}/${
-            item.Data.split("-")[1]
-        } ${item.Hora.split(":")[0]}h${item.Hora.split(":")[1]}`;
-        var title = document.createElement("span");
-        title.classList.add("title");
-        title.innerText = item.Assunto;
+        agenda_wrapper.innerHTML = `
+            <div class="agenda">
+                <div>
+                </div>
+                <div class="info">
+                    <span class="date">
+                        ${item.Data.split("-")[2]}/${item.Data.split("-")[1]} 
+                        ${item.Hora.split(":")[0]}h${item.Hora.split(":")[1]}
+                    </span>
+                    <span class="title">${item.Assunto}</span>
+                </div>
+            </div>
+        `;
 
-        agenda_item.appendChild(time);
-        agenda_item.appendChild(title);
+        agenda_wrapper.classList.add("agenda-wrapper");
 
-        document.querySelector(".agenda-container").appendChild(agenda_item);
+        document.querySelector(".agenda-container").appendChild(agenda_wrapper);
     });
 
     document.querySelectorAll("button.carousel-back").forEach(element => {

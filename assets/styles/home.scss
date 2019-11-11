@@ -73,6 +73,7 @@ section {
                     margin-top: 40px;
                     box-sizing: border-box;
                     border: 1px solid $gray;
+                    max-width: calc(100vw - 90px);
 
                     background-color: #fff;
                     text-align: center;
@@ -205,56 +206,56 @@ section {
 
     &.agenda {
         .agenda-container {
-            // display: flex;
-            // justify-content: flex-start;
-            // flex-direction: row;
-
-            .agenda {
-                width: 180px;
-                height: 150px;
-                background: $red;
-                color: #fff;
-                padding: 20px;
+            .agenda-wrapper {
                 display: inline-block;
-                overflow: hidden;
-                border-radius: 5px;
 
-                position: relative;
-
-                display: flex;
-                justify-content: flex-end;
-                flex-direction: column;
-
-                margin-right: 20px;
-
-                &::before {
-                    content: "\E988";
-                    font-family: LineIcons !important;
-                    font-size: 100px;
+                .agenda {
+                    width: 195px;
+                    height: 150px;
+                    background: $red;
                     color: #fff;
-                    transform: scale(-1, 1);
-                    left: -20px;
-                    top: -30px;
-                    opacity: 0.5;
-                    position: absolute;
-                }
+                    padding: 20px;
+                    display: inline-block;
+                    overflow: hidden;
+                    border-radius: 5px;
 
-                .title {
-                    display: block;
-                    text-align: right;
-                }
+                    position: relative;
 
-                .date {
-                    font-weight: bold;
-                    text-align: right;
-                    margin-bottom: 10px;
-                    // &::before {
-                    //     content: "\E988";
-                    //     font-family: LineIcons !important;
-                    //     font-size: 20px;
-                    //     color: #fff;
-                    //     margin-right: 5px;
-                    // }
+                    margin-right: 20px;
+                    white-space: normal;
+
+                    &::before {
+                        content: "\E988";
+                        font-family: LineIcons !important;
+                        font-size: 100px;
+                        color: #fff;
+                        transform: scale(-1, 1);
+                        left: -20px;
+                        top: -30px;
+                        opacity: 0.5;
+                        position: absolute;
+                    }
+
+                    .info {
+                        position: absolute;
+                        bottom: 0px;
+                        padding: 20px;
+                        left: 0;
+                        width: 100%;
+                        box-sizing: border-box;
+                        text-align: right;
+
+                        .title {
+                            display: block;
+                            text-align: right;
+                        }
+
+                        .date {
+                            font-weight: bold;
+                            text-align: right;
+                            margin-bottom: 10px;
+                        }
+                    }
                 }
             }
         }
