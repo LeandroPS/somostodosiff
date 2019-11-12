@@ -2,15 +2,12 @@ import "babel-polyfill";
 
 import axios from "axios";
 
-// import "./carousel.js";
-
 const getVideos = async () => {
     const videos = await axios.get(
         `https://www.googleapis.com/youtube/v3/playlistItems`,
         {
             params: {
                 playlistId: "PLYIeFndJrJUn8RJf5o9O1EiaXzuHjiO-N",
-                // playlistId: "PLq4HxXQWgC51XslsrtONtnZ5PxchdmfVT",
                 maxResults: 20,
                 part: "snippet",
                 type: "playlist",
@@ -67,9 +64,7 @@ const scrollRight = elem => {
 
 (async function() {
     const videos = await getVideos();
-    const agenda = await getAgenda();
-
-    console.log(videos);
+    let agenda = await getAgenda();
 
     videos.forEach(item => {
         var video = document.createElement("div");
@@ -84,10 +79,20 @@ const scrollRight = elem => {
         document.querySelector(".video-container").appendChild(video);
     });
 
-    agenda.forEach(item => {
-        var agenda_wrapper = document.createElement("div");
+    agenda
+        .filter(item => {
+            return new Date(item.Data) >= new Date("2019-11-11");
+        })
+        .sort((first_item, second_item) => {
+            return (
+                new Date(first_item.Data + " " + first_item.Hora) -
+                new Date(second_item.Data + " " + second_item.Hora)
+            );
+        })
+        .forEach(item => {
+            var agenda_wrapper = document.createElement("div");
 
-        agenda_wrapper.innerHTML = `
+            agenda_wrapper.innerHTML = `
             <div class="agenda">
                 <div>
                 </div>
@@ -101,10 +106,12 @@ const scrollRight = elem => {
             </div>
         `;
 
-        agenda_wrapper.classList.add("agenda-wrapper");
+            agenda_wrapper.classList.add("agenda-wrapper");
 
-        document.querySelector(".agenda-container").appendChild(agenda_wrapper);
-    });
+            document
+                .querySelector(".agenda-container")
+                .appendChild(agenda_wrapper);
+        });
 
     document.querySelectorAll("button.carousel-back").forEach(element => {
         element.onclick = () => {
