@@ -140,7 +140,7 @@ const sendSuggestion = async () => {
 
     agenda
         .filter(item => {
-            return new Date(item.Data) >= new Date("2019-11-11");
+            return new Date(item.Data) >= new Date();
         })
         .sort((first_item, second_item) => {
             return (
