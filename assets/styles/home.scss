@@ -36,8 +36,31 @@ main {
     background-position: center;
     background-size: cover;
 
+    .container {
+        height: 100%;
+        .logo {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+
+            width: 100px;
+
+            @media screen and (max-width: $mobile-width) {
+                width: 70px;
+            }
+
+            @media screen and (max-width: $small-mobile-width) {
+                width: 60px;
+            }
+        }
+    }
+
     @media screen and (max-width: $mobile-width) {
         height: 200px;
+    }
+
+    @media screen and (max-width: $small-mobile-width) {
+        height: 180px;
     }
 }
 
