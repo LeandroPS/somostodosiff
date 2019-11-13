@@ -62,6 +62,65 @@ const scrollRight = elem => {
     });
 };
 
+const openSuggestions = () => {
+    document.querySelector("div.suggestions-panel").classList.add("show");
+};
+
+const closeSuggestions = () => {
+    document.querySelector("div.suggestions-panel").classList.remove("show");
+};
+
+const setSending = () => {
+    document.querySelector(
+        ".suggestions-panel .alternate .form"
+    ).style.opacity = 0.7;
+
+    document.querySelector(
+        ".suggestions-panel .alternate .form form button"
+    ).innerText = "Enviando...";
+};
+
+const setFeedback = success => {
+    document
+        .querySelector(".suggestions-panel .alternate .current")
+        .classList.remove("current");
+    document
+        .querySelector(".feedback.feedback-" + (success ? "success" : "fail"))
+        .classList.add("current");
+};
+
+const sendSuggestion = async () => {
+    try {
+        setSending();
+
+        await axios.post(
+            `http://somostodosiff.eco.br/admin/api/forms/submit/contato`,
+            {
+                form: {
+                    Nome: document.querySelector(
+                        ".suggestions-panel input.name"
+                    ).value,
+                    Email: document.querySelector(
+                        ".suggestions-panel input.email"
+                    ).value,
+                    Mensagem: document.querySelector(
+                        ".suggestions-panel textarea.message"
+                    ).value
+                }
+            },
+            {
+                params: {
+                    token: "97848f04cace217c4f95d2c885d775"
+                }
+            }
+        );
+
+        setFeedback(true);
+    } catch (error) {
+        setFeedback(false);
+    }
+};
+
 (async function() {
     const videos = await getVideos();
     let agenda = await getAgenda();
@@ -126,4 +185,15 @@ const scrollRight = elem => {
     });
 
     document.querySelector("div.glass").onclick = closeVideo;
+
+    document.querySelector(".mid-banner.suggestions").onclick = openSuggestions;
+
+    document.querySelectorAll(".close-suggestions").forEach(element => {
+        element.onclick = closeSuggestions;
+    });
+
+    document.querySelector(".suggestions-panel form").onsubmit = e => {
+        e.preventDefault();
+        sendSuggestion();
+    };
 })();

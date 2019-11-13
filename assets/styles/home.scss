@@ -347,6 +347,106 @@ section {
     }
 }
 
+.suggestions-panel {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    top: 100vh;
+    left: 0;
+    transition: all 0.5s;
+    z-index: 3;
+
+    &.show {
+        top: 0;
+        transition: all 0.5s;
+    }
+
+    .suggestion-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .container {
+            width: 500px;
+        }
+
+        form {
+            input,
+            textarea {
+                appearance: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                display: block;
+                width: 100%;
+                resize: none;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                height: 40px;
+                box-sizing: border-box;
+                outline: none;
+
+                margin-bottom: 10px;
+            }
+
+            textarea {
+                height: 80px;
+            }
+        }
+
+        button {
+            height: 40px;
+            width: 100%;
+            background-color: $green;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+            font: inherit;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            &.gray {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+
+    .feedback {
+        text-align: center;
+
+        i {
+            font-size: 100px;
+
+            &.green {
+                color: $green;
+            }
+
+            &.red {
+                color: $red;
+            }
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.alternate {
+    & > div {
+        display: none;
+    }
+    .current {
+        display: block;
+    }
+}
+
 button.suggestions {
     position: relative;
     margin: 20px auto;
