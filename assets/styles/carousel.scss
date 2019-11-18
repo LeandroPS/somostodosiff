@@ -1,6 +1,8 @@
 .carousel {
     overflow: scroll;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
     @media screen and (max-width: $mobile-width) {
         width: calc(100vw);
         margin-left: -20px;
