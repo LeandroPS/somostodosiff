@@ -399,6 +399,7 @@ section {
         cursor: pointer;
         opacity: 1;
         outline: none;
+        z-index: 2;
 
         &:hover {
             opacity: 0.7;
