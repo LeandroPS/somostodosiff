@@ -46,90 +46,7 @@
                 <div class="container">
                     <h1>Os princípios da nossa gestão</h1>
                     <div class="principles-carousel carousel">
-                        <div class="principles-container inner-carousel">
-                            <a href="/assets/docs/plano/1.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/1.svg"
-                                    />
-                                    <div class="text">
-                                        EFETIVIDADE SOCIAL DA EDUCAÇÃO E
-                                        FORMAÇÃO INTEGRAL
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/2.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/2.svg"
-                                    />
-                                    <div class="text">
-                                        INCLUSÃO E GARANTIA DAS CONDIÇÕES DE
-                                        APRENDIZAGEM, DE FORMA SOLIDÁRIA E COM
-                                        RESPEITO À DIVERSIDADE
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/3.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/3.svg"
-                                    />
-                                    <div class="text">
-                                        GESTÃO DEMOCRÁTICA E TRANSPARENTE E BOA
-                                        GOVERNANÇA
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/4.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/4.svg"
-                                    />
-                                    <div class="text">
-                                        VALORIZAÇÃO DOS SERVIDORES
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/5.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/5.svg"
-                                    />
-                                    <div class="text">
-                                        INTEGRAÇÃO
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/6.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/6.svg"
-                                    />
-                                    <div class="text">
-                                        INOVAÇÃO E SUSTENTABILIDADE
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/assets/docs/plano/7.pdf" target="_blank">
-                                <div class="principle">
-                                    <img
-                                        class="pictogram"
-                                        src="./assets/images/pictograms/7.svg"
-                                    />
-                                    <div class="text">
-                                        ARTICULAÇÃO ENTRE EDUCAÇÃO, CIÊNCIA E
-                                        TECNOLOGIA
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <div class="principles-container inner-carousel"></div>
                         <button class="carousel-back videos">
                             <i class="lni-chevron-left"></i>
                         </button>
@@ -203,10 +120,6 @@
                 </div>
             </section>
         </main>
-        <!-- <button class="suggestions">
-            <i class="lni-comment-alt"></i>
-            Queremos ouvir você
-        </button> -->
 
         <div class="glass">
             <div class="video-panel">
@@ -220,7 +133,19 @@
             </div>
         </div>
 
-        <div class="suggestions-panel">
+        <div class="popup-panel principle-panel">
+            <button class="corner-button close-panel">
+                <i class="lni-close"></i>
+            </button>
+            <div class="popup-container container">
+                <img class="pictogram" src="./assets/images/pictograms/1.svg" />
+                <h1 class="title"></h1>
+                <div class="content"></div>
+                <a href="#" target="_blank" class="see-more">Ver mais</a>
+            </div>
+        </div>
+
+        <div class="popup-panel suggestions-panel">
             <div class="suggestion-wrapper">
                 <div class="container alternate">
                     <div class="form current">
@@ -237,7 +162,9 @@
                             ></textarea>
                             <button>Enviar</button>
                         </form>
-                        <button class="close-suggestions gray">Cancelar</button>
+                        <button class="close-panel close-suggestions gray">
+                            Cancelar
+                        </button>
                     </div>
                     <div class="feedback feedback-success">
                         <h1>
@@ -250,7 +177,9 @@
                             Fique ligado nas redes sociais pois sua mensagem
                             pode ser respondida!
                         </p>
-                        <button class="close-suggestions red">Fechar</button>
+                        <button class="close-panel close-suggestions red">
+                            Fechar
+                        </button>
                     </div>
                     <div class="feedback feedback-fail">
                         <h1>
@@ -262,7 +191,9 @@
                         <p>
                             Tente novamente mais tarde
                         </p>
-                        <button class="close-suggestions red">Fechar</button>
+                        <button class="close-panel close-suggestions red">
+                            Fechar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -271,11 +202,11 @@
         <footer>
             <div class="container">
                 Desenvolvido por
-                <a href="#">
+                <a href="http://leandropires.me">
                     Leandro Pires
                 </a>
                 e
-                <a href="#">
+                <a href="https://www.linkedin.com/in/lucas-freitas-dev/">
                     Lucas Freitas
                 </a>
             </div>

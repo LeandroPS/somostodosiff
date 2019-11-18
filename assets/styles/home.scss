@@ -72,10 +72,7 @@ section {
             display: flex;
             margin-bottom: 20px;
 
-            a {
-                display: inline-block;
-                color: $dark;
-
+            & > div {
                 &:not(:last-child) {
                     margin-right: 20px;
                 }
@@ -121,6 +118,7 @@ section {
                 }
             }
         }
+        // }
 
         .document-container {
             display: grid;
@@ -375,7 +373,7 @@ section {
     }
 }
 
-.suggestions-panel {
+.popup-panel {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -390,6 +388,87 @@ section {
         transition: all 0.5s;
     }
 
+    .corner-button {
+        appearance: none;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        opacity: 1;
+        outline: none;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.principle-panel {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    .popup-container {
+        // width: 650px;
+        text-align: center;
+
+        .pictogram {
+            width: 150px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            @media screen and (max-width: $mobile-width) {
+                width: 100px;
+            }
+        }
+
+        .title {
+            font-size: 30px;
+            max-width: 600px;
+            margin: auto;
+            margin-bottom: 50px;
+
+            @media screen and (max-width: $mobile-width) {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .content {
+            text-align: left;
+            // column-count: 2;
+
+            ul {
+                margin: 0px 0;
+                li {
+                    margin: 10px 0;
+                    padding-left: 10px;
+                }
+            }
+        }
+
+        .see-more {
+            appearance: none;
+            display: inline-block;
+            font-style: none;
+            text-decoration: none;
+            margin: 30px 0;
+            background-color: $green;
+            outline: none;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+            color: #fff;
+            box-sizing: border-box;
+
+            font: inherit;
+        }
+    }
+}
+
+.suggestions-panel {
     .suggestion-wrapper {
         position: absolute;
         top: 50%;

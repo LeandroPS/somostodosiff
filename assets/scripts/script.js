@@ -2,6 +2,8 @@ import "babel-polyfill";
 
 import axios from "axios";
 
+import principles from "./principles";
+
 const getVideos = async () => {
     const videos = await axios.get(
         `https://www.googleapis.com/youtube/v3/playlistItems`,
@@ -62,12 +64,28 @@ const scrollRight = elem => {
     });
 };
 
+const setPrinciple = principle => {
+    document
+        .querySelector("div.principle-panel img")
+        .setAttribute("src", principle.pictogram);
+    document.querySelector("div.principle-panel .title").innerText =
+        principle.title;
+    document.querySelector("div.principle-panel .content").innerHTML =
+        principle.description;
+    document.querySelector("div.principle-panel").classList.add("show");
+    document
+        .querySelector("div.principle-panel a.see-more")
+        .setAttribute("href", principle.document);
+};
+
 const openSuggestions = () => {
     document.querySelector("div.suggestions-panel").classList.add("show");
 };
 
-const closeSuggestions = () => {
-    document.querySelector("div.suggestions-panel").classList.remove("show");
+const closePanel = () => {
+    document
+        .querySelectorAll("div.popup-panel")
+        .forEach(element => element.classList.remove("show"));
 };
 
 const setSending = () => {
@@ -172,6 +190,28 @@ const sendSuggestion = async () => {
                 .appendChild(agenda_wrapper);
         });
 
+    principles.forEach(principle => {
+        var principle_wrapper = document.createElement("div");
+
+        principle_wrapper.innerHTML = `
+            <div class="principle">
+                <img
+                    class="pictogram"
+                    src="${principle.pictogram}"
+                />
+                <div class="text">
+                    ${principle.title}
+                </div>
+            </div>
+        `;
+
+        principle_wrapper.onclick = () => setPrinciple(principle);
+
+        document
+            .querySelector(".principles-container")
+            .appendChild(principle_wrapper);
+    });
+
     document.querySelectorAll("button.carousel-back").forEach(element => {
         element.onclick = () => {
             scrollLeft(element.closest(".carousel"));
@@ -188,8 +228,8 @@ const sendSuggestion = async () => {
 
     document.querySelector(".mid-banner.suggestions").onclick = openSuggestions;
 
-    document.querySelectorAll(".close-suggestions").forEach(element => {
-        element.onclick = closeSuggestions;
+    document.querySelectorAll(".close-panel").forEach(element => {
+        element.onclick = closePanel;
     });
 
     document.querySelector(".suggestions-panel form").onsubmit = e => {
