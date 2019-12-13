@@ -4,6 +4,9 @@ import axios from "axios";
 
 import principles from "./principles";
 
+const qs = document.querySelector.bind(document);
+const qsAll = document.querySelectorAll.bind(document);
+
 const getVideos = async () => {
     const videos = await axios.get(
         `https://www.googleapis.com/youtube/v3/playlistItems`,
@@ -35,19 +38,19 @@ const getAgenda = async () => {
 };
 
 const setVideo = video => {
-    document.querySelector("div.glass").classList.add("show");
-    document.querySelector("div.video-panel").classList.add("show");
+    qs("div.glass").classList.add("show");
+    qs("div.video-panel").classList.add("show");
 
-    document.querySelector("iframe.video-iframe").setAttribute("src", video);
-    document.querySelector("main").classList.add("blurred");
+    qs("iframe.video-iframe").setAttribute("src", video);
+    qs("main").classList.add("blurred");
 };
 
 const closeVideo = () => {
-    document.querySelector("div.glass").classList.remove("show");
-    document.querySelector("div.video-panel").classList.remove("show");
-    document.querySelector("iframe.video-iframe").setAttribute("src", "");
+    qs("div.glass").classList.remove("show");
+    qs("div.video-panel").classList.remove("show");
+    qs("iframe.video-iframe").setAttribute("src", "");
 
-    document.querySelector("main").classList.remove("blurred");
+    qs("main").classList.remove("blurred");
 };
 
 const scrollLeft = elem => {
@@ -65,21 +68,22 @@ const scrollRight = elem => {
 };
 
 const setPrinciple = principle => {
+    qs("div.principle-panel .alternate .current").classList.remove("current");
+    qs("div.principle-panel .alternate .principle").classList.add("current");
+
     document
-        .querySelector("div.principle-panel img")
+        .querySelector("div.principle-panel .principle img")
         .setAttribute("src", principle.pictogram);
-    document.querySelector("div.principle-panel .title").innerText =
-        principle.title;
-    document.querySelector("div.principle-panel .content").innerHTML =
+    qs("div.principle-panel .principle .title").innerText = principle.title;
+    qs("div.principle-panel .principle .content").innerHTML =
         principle.description;
-    document.querySelector("div.principle-panel").classList.add("show");
     document
         .querySelector("div.principle-panel a.see-more")
         .setAttribute("href", principle.document);
 };
 
 const openSuggestions = () => {
-    document.querySelector("div.suggestions-panel").classList.add("show");
+    qs("div.suggestions-panel").classList.add("show");
 };
 
 const closePanel = () => {
@@ -89,13 +93,10 @@ const closePanel = () => {
 };
 
 const setSending = () => {
-    document.querySelector(
-        ".suggestions-panel .alternate .form"
-    ).style.opacity = 0.7;
+    qs(".suggestions-panel .alternate .form").style.opacity = 0.7;
 
-    document.querySelector(
-        ".suggestions-panel .alternate .form form button"
-    ).innerText = "Enviando...";
+    qs(".suggestions-panel .alternate .form form button").innerText =
+        "Enviando...";
 };
 
 const setFeedback = success => {
@@ -115,15 +116,9 @@ const sendSuggestion = async () => {
             `http://somostodosiff.eco.br/admin/api/forms/submit/contato`,
             {
                 form: {
-                    Nome: document.querySelector(
-                        ".suggestions-panel input.name"
-                    ).value,
-                    Email: document.querySelector(
-                        ".suggestions-panel input.email"
-                    ).value,
-                    Mensagem: document.querySelector(
-                        ".suggestions-panel textarea.message"
-                    ).value
+                    Nome: qs(".suggestions-panel input.name").value,
+                    Email: qs(".suggestions-panel input.email").value,
+                    Mensagem: qs(".suggestions-panel textarea.message").value
                 }
             },
             {
@@ -153,7 +148,7 @@ const sendSuggestion = async () => {
                     item.snippet.resourceId.videoId
             );
 
-        document.querySelector(".video-container").appendChild(video);
+        qs(".video-container").appendChild(video);
     });
 
     agenda
@@ -170,69 +165,91 @@ const sendSuggestion = async () => {
             var agenda_wrapper = document.createElement("div");
 
             agenda_wrapper.innerHTML = `
-            <div class="agenda">
-                <div>
+                <div class="agenda">
+                    <div>
+                    </div>
+                    <div class="info">
+                        <span class="date">
+                            ${item.Data.split("-")[2]}/${
+                item.Data.split("-")[1]
+            } 
+                            ${item.Hora.split(":")[0]}h${
+                item.Hora.split(":")[1]
+            }
+                        </span>
+                        <span class="title">${item.Assunto}</span>
+                    </div>
                 </div>
-                <div class="info">
-                    <span class="date">
-                        ${item.Data.split("-")[2]}/${item.Data.split("-")[1]} 
-                        ${item.Hora.split(":")[0]}h${item.Hora.split(":")[1]}
-                    </span>
-                    <span class="title">${item.Assunto}</span>
-                </div>
-            </div>
-        `;
+            `;
 
             agenda_wrapper.classList.add("agenda-wrapper");
 
-            document
-                .querySelector(".agenda-container")
-                .appendChild(agenda_wrapper);
+            qs(".agenda-container").appendChild(agenda_wrapper);
         });
 
     principles.forEach(principle => {
         var principle_wrapper = document.createElement("div");
 
         principle_wrapper.innerHTML = `
-            <div class="principle">
-                <img
-                    class="pictogram"
-                    src="${principle.pictogram}"
-                />
-                <div class="text">
-                    ${principle.title}
+            <a href="${principle.document}" target="_blank">
+                <div class="principle">
+                    <img
+                        class="pictogram"
+                        src="${principle.pictogram}"
+                    />
+                    <div class="text">
+                        ${principle.title}
+                    </div>
                 </div>
-            </div>
+            </a>
         `;
 
-        principle_wrapper.onclick = () => setPrinciple(principle);
-
-        document
-            .querySelector(".principles-container")
-            .appendChild(principle_wrapper);
+        qs(".principles-container").appendChild(principle_wrapper);
     });
 
-    document.querySelectorAll("button.carousel-back").forEach(element => {
+    principles
+        .filter(principle => principle.title !== "VALORIZAÇÃO DOS SERVIDORES")
+        .forEach(principle => {
+            const principle_pictogram = document.createElement("img");
+
+            principle_pictogram.setAttribute("src", principle.pictogram);
+
+            principle_pictogram.onclick = () => setPrinciple(principle);
+
+            qs(".principles-pictograms").appendChild(principle_pictogram);
+        });
+
+    qsAll("button.carousel-back").forEach(element => {
         element.onclick = () => {
             scrollLeft(element.closest(".carousel"));
         };
     });
 
-    document.querySelectorAll("button.carousel-forward").forEach(element => {
+    qsAll("button.carousel-forward").forEach(element => {
         element.onclick = () => {
             scrollRight(element.closest(".carousel"));
         };
     });
 
-    document.querySelector("div.glass").onclick = closeVideo;
+    qs("div.glass").onclick = closeVideo;
 
-    document.querySelector(".mid-banner.suggestions").onclick = openSuggestions;
+    qs(".mid-banner.suggestions").onclick = openSuggestions;
 
-    document.querySelectorAll(".close-panel").forEach(element => {
+    qsAll(".close-panel").forEach(element => {
         element.onclick = closePanel;
     });
 
-    document.querySelector(".suggestions-panel form").onsubmit = e => {
+    qs(".principles-for-students").onclick = () => {
+        qs("div.principle-panel .alternate .current").classList.remove(
+            "current"
+        );
+        qs("div.principle-panel .alternate .principles-list").classList.add(
+            "current"
+        );
+        qs("div.principle-panel").classList.add("show");
+    };
+
+    qs(".suggestions-panel form").onsubmit = e => {
         e.preventDefault();
         sendSuggestion();
     };
